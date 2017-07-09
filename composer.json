@@ -1,0 +1,35 @@
+{
+	"name": "wp-kit/vc-integration",
+	"description": "A Wordpress PHP Component to handle Visual Composer Configuration",
+	"keywords": ["wordpress", "themosis", "oop", "visual composer"],
+	"homepage" : "https://github.com/wp-kit/vc-integration",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Creative Little Dots",
+			"email" : "tech@creativelittledots.co.uk",
+			"homepage" : "https://creativelittledots.co.uk/",
+			"role" : "Developers"
+		}
+	],
+	"require": {
+        "php": ">=5.6.4",
+        "wp-kit/integrations": "dev-master"
+    },
+	"type": "library",
+	"autoload": {
+        "psr-4": {
+            "WPKit\\Integrations\\Vc\\": "src/Vc" 
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "config": {
+		"preferred-install": "dist"
+	},
+	"repositories": [
+	],
+	"scripts": {
+	}
+}
