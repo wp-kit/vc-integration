@@ -12,14 +12,15 @@
 	    	$this->settings = $this->app['config.factory']->get('vc', [
 		    	'params' => [],
 		    	'support' => [],
-		    	'replace' => []
+		    	'replace' => [],
+			'vc_path' => resources_path('vc')
 	    	]);
         	
         	if( ! function_exists('vc_set_shortcodes_templates_dir') ) {
             	return;
         	}
         	
-        	vc_set_shortcodes_templates_dir( resources_path('vc') );
+        	vc_set_shortcodes_templates_dir( $this->settings['vc_path'] );
         	
         	foreach( $this->app['shortcodes']->getShortcodes() as $shortcode ) {
     	        
