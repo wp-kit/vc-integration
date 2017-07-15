@@ -1,6 +1,6 @@
 {
 	"name": "wp-kit/vc-integration",
-	"description": "A Wordpress PHP Component to handle Visual Composer Configuration",
+	"description": "A Wordpress PHP Component that handles Visual Composer Configuration",
 	"keywords": ["wordpress", "themosis", "oop", "visual composer"],
 	"homepage" : "https://github.com/wp-kit/vc-integration",
 	"license": "MIT",
