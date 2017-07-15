@@ -1,6 +1,6 @@
 # WPKit Visual Composer Integration
 
-This is a Wordpress PHP Component to handle Visual Composer Configuration. 
+This is a Wordpress PHP Component that handles Visual Composer Configuration. 
 
 This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
 
