@@ -2,7 +2,7 @@
     
     namespace WPKit\Integrations\VisualComposer;
     
-    use WPKit\Registry\Shortcode\Shortcode as BaseShortcode;
+    use WPKit\Shortcodes\Shortcode as BaseShortcode;
 
 	class Shortcode extends BaseShortcode {
     	  
