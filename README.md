@@ -57,7 +57,7 @@ $provider->register(); //register service provider
 
 ## Config
 
-The recommended method of installing config files for WPKit Components is via ```wp-kit/vendor-publish``` using [WP CLI](http://wp-cli.org/).
+The recommended method of installing config files for WPKit Components is via ```wp-kit/vendor-publish``` command.
 
 First, [install WP CLI](http://wp-cli.org/), and then install the package via:
 
