@@ -72,6 +72,10 @@ For more information, please visit [wp-kit/vendor-publish](https://github.com/wp
 
 Alternatively, you can place the [config file(s)](config) in your ```theme/resources/config``` directory manually.
 
+## Usage
+
+Please install and study the default [config file](https://github.com/wp-kit/vc-integration/blob/master/config/vc.config.php) as described above to learn how to use this component.
+
 ## Requirements
 
 Wordpress 4+
