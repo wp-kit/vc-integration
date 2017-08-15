@@ -69,7 +69,7 @@ Once installed you can run:
 
 For more information, please visit [wp-kit/vendor-publish](https://github.com/wp-kit/vendor-publish).
 
-Alternatively, you can place the [config file(s)](tree/master/config) in your ```theme/resources/config``` directory manually.
+Alternatively, you can place the [config file(s)](config) in your ```theme/resources/config``` directory manually.
 
 ## Requirements
 
