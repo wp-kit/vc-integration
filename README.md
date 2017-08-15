@@ -4,7 +4,7 @@ This is a Wordpress PHP Component that handles Visual Composer Configuration.
 
 This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
 
-This Components is very small and is simply a Service Provider which helps to simplify the configuration of Visual Composer and registration of Shortcodes compatible with Visual Composer.
+This Components is very small and is simply a Service Provider which helps to simplify the configuration of Visual Composer and registration of Shortcodes compatible with Visual Composer via a [config file](https://github.com/wp-kit/vc-integration/blob/master/config/vc.config.php).
 
 ## Installation
 
