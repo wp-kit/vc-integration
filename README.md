@@ -57,99 +57,19 @@ $provider->register(); //register service provider
 
 ## Config
 
-Now just add the configuration file in your config directory:
+The recommended method of installing config files for WPKit Components is via ```wp-kit/vendor-publish``` using [WP CLI](http://wp-cli.org/).
 
-```php
-// In theme/resources/config/vc.config.php
+First, [install WP CLI](http://wp-cli.org/), and then install the package via:
 
-return [
+```wp package install wp-kit/vendor-publish```
 
-    /*
-    |--------------------------------------------------------------------------
-    | VC Support
-    |--------------------------------------------------------------------------
-    |
-    | Tell the Service Provider which original VC Components to retain and support
-    |
-    */
+Once installed you can run:
 
-    'support' => [
-	'vc_row',
-	'vc_row_inner',
-	'vc_column',
-	'vc_column_inner',
-	'vc_column_text',
-	'vc_single_image',
-	'vc_tta_accordion',
-	'vc_tta_section',
-	'vc_section',
-	'gravityform',
-    ],
-    
-    /*
-    |--------------------------------------------------------------------------
-    | VC Params
-    |--------------------------------------------------------------------------
-    |
-    | Tell the Service Provider of any params (fields) you would like to add to 
-    | existing components
-    |
-    */
+```wp kit vendor:publish```
 
-    'params' => [
-    	
-	[
-	    'type' => 'dropdown',
-	    'heading' => "Style",
-	    'param_name' => 'style',
-	    'value' => array( "one", "two", "three" ),
-	    'description' => __( "New style attribute", "my-text-domain" ),
-	    'shortcodes => [
-	    	'vc_section',
-		'vc_column'
-	    ]
-	]
-	
-    ],
-    
-     /*
-    |--------------------------------------------------------------------------
-    | VC Replace
-    |--------------------------------------------------------------------------
-    |
-    | Tell the Service Provider which classnames to replace on rows and columns 
-    |
-    */
+For more information, please visit [wp-kit/vendor-publish](https://github.com/wp-kit/vendor-publish).
 
-    'replace' => [
-    
-	'vc_row' => 'grid',
-	'vc_row-fluid' => 'grid--edge',
-	'wpb_column' => 'grid__item',
-	'vc_col-xs-$1' => 'size-$1',
-	'vc_col-sm-$1' => 'size-$1-m'
-	'vc_col-md-$1' => 'size-$1-l',
-	'vc_col-lg-$1' => 'size-$1-xl'
-	
-    ]
-
-    /*
-    |--------------------------------------------------------------------------
-    | VC View Path
-    |--------------------------------------------------------------------------
-    |
-    | Tell the Server Provider where to find original VC view files that you
-    | want to override
-    |
-    | ~/theme/resources/vc/
-    |
-    */
-
-    'vc_path' => resources_path('vc')
-
-];
-
-```
+Alternative, you can place the [config file(s)](blob/master/config) in your ```theme/resources/config``` directory manually.
 
 ## Requirements
 
