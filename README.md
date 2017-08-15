@@ -14,7 +14,9 @@ If you're using Themosis, install via composer in the Themosis route folder, oth
 composer require "wp-kit/vc-integration"
 ```
 
-## Registering Service Provider
+## Setup
+
+### Add Service Provider
 
 **Within Themosis Theme**
 
@@ -54,8 +56,7 @@ $provider = new WPKit\Integrations\Vc\VisualComposerServiceProvider($container);
 $provider->register(); //register service provider
 ```
 
-
-## Config
+### Add Config File
 
 The recommended method of installing config files for WPKit Components is via ```wp-kit/vendor-publish``` command.
 
