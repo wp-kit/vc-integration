@@ -1,14 +1,14 @@
-# WPKit Visual Composer Integration
+# wp-kit/vc-integration
 
-This is a Wordpress PHP Component that handles Visual Composer Configuration. 
+This is a Wordpress PHP Component that handles ```Visual Composer``` Configuration. 
 
-This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
+This PHP Component was built to run within an ```Illuminate\Container\Container``` so is perfect for frameworks such as ```Themosis```.
 
-This Components is very small and is simply a Service Provider which helps to simplify the configuration of Visual Composer and registration of Shortcodes compatible with Visual Composer via a [config file](config/vc.config.php).
+This Components is very small and is simply a ```ServiceProvider``` which helps to simplify the configuration of ```Visual Composer``` and registration of Shortcodes compatible with ```Visual Composer``` via a [config file](config/vc.config.php).
 
 ## Installation
 
-If you're using Themosis, install via composer in the Themosis route folder, otherwise install in your theme folder:
+If you're using ```Themosis```, install via ```Composer``` in the root of your ```Themosis``` installation, otherwise install in your ```Composer``` driven theme folder:
 
 ```php
 composer require "wp-kit/vc-integration"
@@ -34,7 +34,7 @@ return [
 
 **Within functions.php**
 
-If you are just using this component standalone then add the following the functions.php
+If you are just using this component standalone then add the following the ```functions.php```
 
 ```php
 // within functions.php
@@ -58,7 +58,7 @@ $provider->register(); //register service provider
 
 ### Add Config File
 
-The recommended method of installing config files for WPKit Components is via ```wp-kit/vendor-publish``` command.
+The recommended method of installing config files for ```wp-kit``` components is via ```wp-kit/vendor-publish``` command.
 
 First, [install WP CLI](http://wp-cli.org/), and then install the package via:
 
@@ -86,4 +86,4 @@ PHP 5.6+
 
 ## License
 
-WPKit VC Integration is open-sourced software licensed under the MIT License.
+wp-kit/vc-integration is open-sourced software licensed under the MIT License.
