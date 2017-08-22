@@ -8,7 +8,7 @@ This component is simply a [```ServiceProvider```](https://github.com/wp-kit/vc-
 
 ## Installation
 
-If you're using ```Themosis```, install via ```Composer```](https://getcomposer.org/) in the root of your ```Themosis``` installation, otherwise install in your ```Composer``` driven theme folder:
+If you're using ```Themosis```, install via [```Composer```](https://getcomposer.org/) in the root of your ```Themosis``` installation, otherwise install in your ```Composer``` driven theme folder:
 
 ```php
 composer require "wp-kit/vc-integration"
