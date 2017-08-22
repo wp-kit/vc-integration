@@ -1,14 +1,14 @@
 # wp-kit/vc-integration
 
-This is a Wordpress PHP Component that handles ```Visual Composer``` Configuration. 
+This is a Wordpress PHP Component that handles [```Visual Composer```](https://vc.wpbakery.com/) Configuration. 
 
-This PHP Component was built to run within an ```Illuminate\Container\Container``` so is perfect for frameworks such as ```Themosis```.
+This PHP Component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/).
 
-This Components is very small and is simply a ```ServiceProvider``` which helps to simplify the configuration of ```Visual Composer``` and registration of Shortcodes compatible with ```Visual Composer``` via a [config file](config/vc.config.php).
+This component is simply a [```ServiceProvider```](https://github.com/wp-kit/vc-integration/blob/master/src/Vc/VisualComposerServiceProvider.php) which helps to simplify the configuration of ```Visual Composer``` and registration of shortcodes compatible with ```Visual Composer``` via a [config file](config/vc.config.php).
 
 ## Installation
 
-If you're using ```Themosis```, install via ```Composer``` in the root of your ```Themosis``` installation, otherwise install in your ```Composer``` driven theme folder:
+If you're using ```Themosis```, install via ```Composer```](https://getcomposer.org/) in the root of your ```Themosis``` installation, otherwise install in your ```Composer``` driven theme folder:
 
 ```php
 composer require "wp-kit/vc-integration"
