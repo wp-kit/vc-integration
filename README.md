@@ -48,6 +48,14 @@ Alternatively, you can place the [config file(s)](config) in your ```theme/resou
 
 ## Usage
 
+### Adding Classes
+
+```wp-kit\vc-integration``` comes with a class [```WPKit\Integrations\Vc\Shortcode```](src/Vc/Shortcode.php) which can be extended by your own shortcode classes which should be added inside ```resources/shortcodes``` within the namespace ```Theme\Shortcodes```. 
+
+[Here is an example Shortcode class](shortcodes/Test.php).
+
+### Config
+
 Please install and study the default [config file](config/vc.config.php) as described above to learn how to use this component.
 
 ## Requirements
