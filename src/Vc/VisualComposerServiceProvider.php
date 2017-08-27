@@ -16,27 +16,32 @@
 		}
     	
 		public function startIntegration() {
-
-			$this->settings = $this->app['config.factory']->get('vc', [
+			
+			$defaults = [
 				'params' => [],
 				'support' => [],
 				'replace' => [],
-				'vc_path' => resources_path('vc')
-			]);
+				'vc_path' => resources_path('vc'),
+				'reset' => true
+			];
+
+			$this->settings = array_merge( $defaults, $this->app['config.factory']->get('vc', $defaults) );
 
 			if( ! function_exists('vc_set_shortcodes_templates_dir') ) {
-			return;
+				return;
 			}
 
 			vc_set_shortcodes_templates_dir( $this->settings['vc_path'] );
 
-			foreach( $this->app['shortcodes']->getShortcodes() as $shortcode ) {
+			foreach( $this->app['config.factory']->get('shortcodes.shortcodes') as $tag => $shortcode ) {
+				
+				$shortcode = $this->app->make($shortcode);
 
-			if( $shortcode instanceof Shortcode ) {
-
-				vc_map( $shortcode->toArray() );
-
-			}
+				if( $shortcode instanceof Shortcode && $shortcode->getBase() ) {
+	
+					vc_map( $shortcode->toArray() );
+	
+				}
 
 			}
 
@@ -44,29 +49,17 @@
 			add_filter( 'vc_shortcodes_css_class', array($this, 'customCssClaess'), 10, 3 );
 			add_action( 'vc_after_init', array($this, 'addVcParams') );
 
-			spl_autoload_register(function($className) {
-
-			$file = vc_path_dir( resources_path('shortcodes'), strtolower(str_replace('_', '-', str_replace('WPBakeryShortCode_' , '', $className))) . '.php');
-
-			if( file_exists($file) ) {
-
-			    require $file;
-
-			}
-
-		    });
-
 		}
 
-		public function removeVcStyles() {
+		public function addVcParams() {
 
 			foreach( WPBMap::getAllShortCodes() as $base => $element ) {
 
-			if( ! in_array( $base, array_merge( $this->settings['support'], array_keys( $this->app->getShortcodes() ) ) ) ) {
-
-				WPBMap::dropShortcode( $base );
-
-			}
+				if( $this->settings['reset'] && ! in_array( $base, array_merge( $this->settings['support'], array_keys( $this->app['config.factory']->get('shortcodes.shortcodes') ) ) ) ) {
+	
+					WPBMap::dropShortcode( $base );
+	
+				}
 
 			}
 
@@ -74,7 +67,7 @@
 
 				foreach( $param['shortcodes'] as $shortcode ) {
 
-				vc_add_param( $shortcode, $param );
+					vc_add_param( $shortcode, $param );
 
 				}
 
@@ -82,12 +75,12 @@
 
 		}
 
-		public function addVcParams() {
+		public function removeVcStyles() {
 
 		    if( empty( $_REQUEST['vc_editable'] ) ) {
 
-			wp_deregister_style( 'js_composer_front' );
-			wp_deregister_script( 'wpb_composer_front_js' );
+				wp_deregister_style( 'js_composer_front' );
+				wp_deregister_script( 'wpb_composer_front_js' );
 
 		    }
 

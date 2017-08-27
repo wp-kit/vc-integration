@@ -67,11 +67,11 @@
 			'vc_row-fluid' => 'grid--edge',
 			'wpb_column' => 'grid__item',
 			'vc_col-xs-$1' => 'size-$1',
-			'vc_col-sm-$1' => 'size-$1-m',
+			'vc_col-sm-$1' => 'size-$1-m'
 			'vc_col-md-$1' => 'size-$1-l',
 			'vc_col-lg-$1' => 'size-$1-xl'
 		
-	    ],
+	    ]
 	
 	    /*
 	    |--------------------------------------------------------------------------

@@ -1,12 +1,11 @@
 <?php
     
-    namespace WPKit\Integrations\VisualComposer;
+    namespace WPKit\Integrations\Vc;
     
     use WPKit\Shortcodes\Shortcode as BaseShortcode;
 
 	class Shortcode extends BaseShortcode {
-    	  
-    	var $base = ''; 	
+    	  	
     	var $name = '';
         var $description = '';
         var $class = '';
@@ -25,13 +24,19 @@
         var $custom_markup = '';
         var $js_view = '';
         var $html_template = '';
-        var $deprecated = false;
         var $content_element = true;
+		var $params = array();
 		
-		protected function toArray() {
+		public function getBase() {
+			
+			return $this->tag;
+			
+		}
+		
+		public function toArray() {
 			
 			return array_merge(get_object_vars($this), array(
-				'params' => array_values( $this->atts )
+				'base' => $this->getBase()
 			));
     		
 		}
