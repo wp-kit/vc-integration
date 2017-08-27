@@ -65,11 +65,14 @@
 		    
 			'vc_row' => 'grid',
 			'vc_row-fluid' => 'grid--edge',
+			'wpb_row' => '',
+			'vc_inner' => '',
 			'wpb_column' => 'grid__item',
-			'vc_col-xs-$1' => 'size-$1',
-			'vc_col-sm-$1' => 'size-$1-m'
-			'vc_col-md-$1' => 'size-$1-l',
-			'vc_col-lg-$1' => 'size-$1-xl'
+			'vc_column_container' => '',
+			'/vc_col-xs-(\d{1,2})/' => 'size-$1',
+			'/vc_col-sm-(\d{1,2})/' => 'size-$1-m'
+			'/vc_col-md-(\d{1,2})/' => 'size-$1-l',
+			'/vc_col-lg-(\d{1,2})/' => 'size-$1-xl'
 		
 	    ]
 	
