@@ -12,6 +12,10 @@
 			$this->publishes([
 				__DIR__.'/../../config/vc.config.php' => config_path('vc.config.php')
 			], 'config');
+			
+			$this->publishes([
+				__DIR__.'/../../shortcodes/Test.php' => shortcode_path('Test.php')
+			], 'shortcodes');
 
 		}
     	
