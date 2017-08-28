@@ -6,11 +6,46 @@
 
     class Test extends Shortcode {
 
+		/**
+	     * The name of the shortcode
+	     *
+	     * @var string
+	     */
         var $name = 'Test';
+        
+        /**
+	     * The tag of the shortcode
+	     *
+	     * @var string
+	     */
         var $tag = 'test';
+        
+        /**
+	     * The icon for the shortcode
+	     *
+	     * @var string
+	     */
         var $icon = THEME_URI . '/images/test-element.png';
+        
+        /**
+	     * The description of the shortcode
+	     *
+	     * @var string
+	     */
         var $description = 'Test Element';
+        
+        /**
+	     * Should settings show on create
+	     *
+	     * @var boolean
+	     */
         var $show_settings_on_create = true;
+        
+        /**
+	     * The params of the shortcode
+	     *
+	     * @var array
+	     */
         var $params = [
             'image' => [
                 'type' => 'attach_image',
@@ -63,12 +98,23 @@
             ]
         ];
         
+        /**
+	     * Get filename for the shortcode
+	     *
+	     * @return string
+		 */
         protected function getFilename() {
 			
 			return 'tests' . DS . $this->tag;
 			
 		}
 		
+		/**
+	     * Filter the shortcode attributes
+	     *
+	     * @param array $atts
+	     * @return array
+		 */
 		protected function filterAtts( $atts = array() ) {
 	
 	    	$atts['icon'] = get_stylesheet_directory_uri() . '/images/' . $atts['icon'];
@@ -76,7 +122,12 @@
 			return $atts;
 			
 		}
-			
+		
+		/**
+	     * Get default attributes for the shortcode
+	     *
+	     * @return array
+		 */	
 		protected function getDefaultAtts() {
 	
 			if( is_user_logged_in() ) {

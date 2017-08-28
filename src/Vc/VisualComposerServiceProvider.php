@@ -7,6 +7,11 @@
 
 	class VisualComposerServiceProvider extends Integration {
 		
+		/**
+	     * Boot the service provider.
+	     *
+	     * @return void
+	     */
 		public function boot() {
 		
 			$this->publishes([
@@ -19,6 +24,11 @@
 
 		}
     	
+    	/**
+	     * Start the integration.
+	     *
+	     * @return void
+	     */
 		public function startIntegration() {
 			
 			$defaults = [
@@ -55,6 +65,11 @@
 
 		}
 
+		/**
+	     * Remove vc shortcodes and add params
+	     *
+	     * @return void
+	     */
 		public function addVcParams() {
 
 			foreach( WPBMap::getAllShortCodes() as $base => $element ) {
@@ -79,6 +94,11 @@
 
 		}
 
+		/**
+	     * Remove vc styles
+	     *
+	     * @return void
+	     */
 		public function removeVcStyles() {
 
 		    if( empty( $_REQUEST['vc_editable'] ) ) {
@@ -90,6 +110,11 @@
 
 		}
 
+		/**
+	     * Apply custom classes
+	     *
+	     * @return void
+	     */
 		public function customCssClaess( $class, $tag, $atts ) {
 			
 			foreach($this->settings['replace'] as $find => $replace) {
