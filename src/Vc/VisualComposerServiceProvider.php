@@ -31,6 +31,12 @@
 	     */
 		public function startIntegration() {
 			
+			if( defined( 'WP_CLI' ) && WP_CLI ) {
+				
+				return false;
+				
+			}
+			
 			$defaults = [
 				'params' => [],
 				'support' => [],
