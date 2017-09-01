@@ -50,6 +50,10 @@ Alternatively, you can place the [config file(s)](config) and [shortcode file(s)
 
 [Here is an example Shortcode class](shortcodes/Test.php).
 
+### Config
+
+Please install and study the default [config file](config/vc.config.php) as described above to learn how to use this component.
+
 ## Get Involved
 
 To learn more about how to use ```wp-kit``` check out the docs:
@@ -65,10 +69,6 @@ Any help is appreciated. The project is open-source and we encourage you to part
 - Sharing the project around your community
 
 For details about contributing to the framework, please check the [contribution guide](https://github.com/wp-kit/theme/tree/docs/Contributing.md).
-
-### Config
-
-Please install and study the default [config file](config/vc.config.php) as described above to learn how to use this component.
 
 ## Requirements
 
