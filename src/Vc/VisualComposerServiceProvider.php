@@ -42,7 +42,8 @@
 				'support' => [],
 				'replace' => [],
 				'vc_path' => resources_path('vc'),
-				'reset' => true
+				'reset' => true,
+				'reset_styles' => true
 			];
 
 			$this->settings = array_merge( $defaults, $this->app['config.factory']->get('vc', $defaults) );
@@ -66,7 +67,7 @@
 			}
 
 			add_action( 'wp_enqueue_scripts', array($this, 'removeVcStyles'), 99 );
-			add_filter( 'vc_shortcodes_css_class', array($this, 'customCssClaess'), 10, 3 );
+			add_filter( 'vc_shortcodes_css_class', array($this, 'customCssClasses'), 10, 3 );
 			add_action( 'vc_after_init', array($this, 'addVcParams') );
 
 		}
@@ -107,7 +108,7 @@
 	     */
 		public function removeVcStyles() {
 
-		    if( empty( $_REQUEST['vc_editable'] ) ) {
+		    if( empty( $_REQUEST['vc_editable'] ) && $this->settings['reset_styles'] ) {
 
 				wp_deregister_style( 'js_composer_front' );
 				wp_deregister_script( 'wpb_composer_front_js' );
@@ -121,7 +122,7 @@
 	     *
 	     * @return void
 	     */
-		public function customCssClaess( $class, $tag, $atts ) {
+		public function customCssClasses( $class, $tag, $atts ) {
 			
 			foreach($this->settings['replace'] as $find => $replace) {
 				
