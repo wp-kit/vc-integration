@@ -85,7 +85,7 @@
 
 			foreach( WPBMap::getAllShortCodes() as $base => $element ) {
 
-				if( $this->settings['reset'] && ! in_array( $base, array_merge( $this->settings['support'], array_keys( $this->app['config.factory']->get('shortcodes.shortcodes') ) ) ) ) {
+				if( $this->settings['reset_shortcodes'] && ! in_array( $base, array_merge( $this->settings['support'], array_keys( $this->app['config.factory']->get('shortcodes.shortcodes') ) ) ) ) {
 	
 					WPBMap::dropShortcode( $base );
 	
