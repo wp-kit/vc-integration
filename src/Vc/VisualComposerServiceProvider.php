@@ -43,8 +43,12 @@
 				'replace' => [],
 				'vc_path' => resources_path('vc'),
 				'reset' => true,
+				'reset_shortcodes' => true,
 				'reset_styles' => true
 			];
+			
+			$this->settings['reset_shortcodes'] = ! $this->settings['reset'] ? false : $this->settings['reset_shortcodes'];
+			$this->settings['reset_styles'] = ! $this->settings['reset'] ? false : $this->settings['reset_styles'];
 
 			$this->settings = array_merge( $defaults, $this->app['config.factory']->get('vc', $defaults) );
 
