@@ -12,6 +12,10 @@
 	    | Tell the Service Provider which original VC Components to retain and support
 	    |
 	    */
+		
+	  	'reset_shortcodes' => true,
+	  	
+	  	'reset_styles' => true,
 	
 	    'support' => [
 			'vc_row',
