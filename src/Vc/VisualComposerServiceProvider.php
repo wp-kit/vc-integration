@@ -46,11 +46,11 @@
 				'reset_shortcodes' => false,
 				'reset_styles' => false
 			];
+
+			$this->settings = array_merge( $defaults, $this->app['config.factory']->get('vc', $defaults) );
 			
 			$this->settings['reset_shortcodes'] = $this->settings['reset'] ? true : $this->settings['reset_shortcodes'];
 			$this->settings['reset_styles'] = $this->settings['reset'] ? true : $this->settings['reset_styles'];
-
-			$this->settings = array_merge( $defaults, $this->app['config.factory']->get('vc', $defaults) );
 
 			if( ! function_exists('vc_set_shortcodes_templates_dir') ) {
 				return;
