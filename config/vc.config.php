@@ -70,7 +70,8 @@
 	    | VC Replace
 	    |--------------------------------------------------------------------------
 	    |
-	    | Tell the Service Provider which classnames to replace on rows and columns 
+	    | Tell the Service Provider which classnames to replace on rows and columns,
+	    | this can be an array, a reference to a function or a closure
 	    |
 	    */
 	
@@ -101,7 +102,7 @@
 	    | Tell the Server Provider where to find original VC view files that you
 	    | want to override
 	    |
-	    | ~/theme/resources/vc/
+	    | ~/theme/resources/views/vc/
 	    |
 	    */
 	
