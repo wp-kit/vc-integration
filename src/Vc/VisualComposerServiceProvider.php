@@ -128,9 +128,17 @@
 	     */
 		public function customCssClasses( $class, $tag, $atts ) {
 			
-			foreach($this->settings['replace'] as $find => $replace) {
+			if( is_array( $this->settings['replace'] ) ) {
+			
+				foreach($this->settings['replace'] as $find => $replace) {
+					
+					$class = preg_replace( $find, $replace, $class );
+					
+				}
 				
-				$class = preg_replace( $find, $replace, $class );
+			} else if( is_callable( $this->settings['replace'] ) ) {
+				
+				$class = $this->settings['replace']( $class, $tag, $atts );
 				
 			}
 
