@@ -90,20 +90,20 @@
 		
 	    ],
 		
-	    'replace_callback' => function( $class, $tag, $atts ) {
+	    'replace_callback' => function( $class, $tag, $atts, $replace ) {
             
 		    if ( $tag == 'vc_row' || $tag == 'vc_row_inner' ) {
-			    $classname = ! empty( $this->settings['replace']['vc_row'] ) ? $this->settings['replace']['vc_row'] : 'o-grid';
-			    $classname .= ! empty( $atts['full_width'] ) ? ( ! empty( $this->settings['replace']['vc_row-fluid'] ) ? $this->settings['replace']['vc_row-fluid'] : ' o-grid--edge' ) : '';
+			    $classname = ! empty( $replace['vc_row'] ) ? $replace['vc_row'] : 'o-grid';
+			    $classname .= ! empty( $atts['full_width'] ) ? ( ! empty( $replace['vc_row-fluid'] ) ? $replace['vc_row-fluid'] : ' o-grid--edge' ) : '';
 				$class = str_replace( 'vc_row-fluid', $classname, $class );
 				$class = str_replace( array('vc_row', 'wpb_row', 'vc_inner'), array('', '', ''), $class );
 		    }
 		    if ( $tag == 'vc_column' || $tag == 'vc_column_inner' ) {
-				$class = str_replace( 'wpb_column vc_column_container', ! empty( $this->settings['replace']['wpb_column'] ) ? $this->settings['replace']['wpb_column'] : 'o-grid__item', $class );
-				$class = preg_replace( '/vc_col-xs-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-xs-(\d{1,2})/'] ) ? $this->settings['replace']['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1', $class );
-				$class = preg_replace( '/vc_col-sm-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-sm-(\d{1,2})/'] ) ? $this->settings['replace']['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1@m', $class );
-				$class = preg_replace( '/vc_col-md-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-md-(\d{1,2})/'] ) ? $this->settings['replace']['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1@l', $class );
-				$class = preg_replace( '/vc_col-lg-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-lg-(\d{1,2})/'] ) ? $this->settings['replace']['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1@xl', $class );
+				$class = str_replace( 'wpb_column vc_column_container', ! empty( $replace['wpb_column'] ) ? $replace['wpb_column'] : 'o-grid__item', $class );
+				$class = preg_replace( '/vc_col-xs-(\d{1,2})/', ! empty( $replace['/vc_col-xs-(\d{1,2})/'] ) ? $replace['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1', $class );
+				$class = preg_replace( '/vc_col-sm-(\d{1,2})/', ! empty( $replace['/vc_col-sm-(\d{1,2})/'] ) ? $replace['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1@m', $class );
+				$class = preg_replace( '/vc_col-md-(\d{1,2})/', ! empty( $replace['/vc_col-md-(\d{1,2})/'] ) ? $replace['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1@l', $class );
+				$class = preg_replace( '/vc_col-lg-(\d{1,2})/', ! empty( $replace['/vc_col-lg-(\d{1,2})/'] ) ? $replace['/vc_col-xs-(\d{1,2})/'] : 'u-size-$1@xl', $class );
 		    }
 		    
 		    return $class;
