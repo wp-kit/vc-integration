@@ -51,17 +51,17 @@
 	
 	    'params' => [
 	    	
-		[
-		    'type' => 'dropdown',
-		    'heading' => 'Style',
-		    'param_name' => 'style',
-		    'value' => array( 'one', 'two', 'three' ),
-		    'description' => __( 'New style attribute', 'my-text-domain' ),
-		    'shortcodes' => [
-		    	'vc_section',
-				'vc_column'
-		    ]
-		]
+			[
+			    'type' => 'dropdown',
+			    'heading' => 'Style',
+			    'param_name' => 'style',
+			    'value' => array( 'one', 'two', 'three' ),
+			    'description' => __( 'New style attribute', 'my-text-domain' ),
+			    'shortcodes' => [
+			    	'vc_section',
+					'vc_column'
+			    ]
+			]
 		
 	    ],
 	    
@@ -71,24 +71,39 @@
 	    |--------------------------------------------------------------------------
 	    |
 	    | Tell the Service Provider which classnames to replace on rows and columns,
-	    | this can be an array, a reference to a function or a closure
+	    | replace must be an array, replace callback must be a closure
 	    |
 	    */
 	
-	    'replace' => function( $class, $tag, $atts ) {
+		'replace' => [
+		    
+		    'vc_row-fluid' => 'o-grid--edge',
+			'vc_row' => 'o-grid',
+			'wpb_row' => '',
+			'vc_inner' => '',
+			'wpb_column' => 'o-grid__item',
+			'vc_column_container' => '',
+			'/vc_col-xs-(\d{1,2})/' => 'u-size-$1',
+			'/vc_col-sm-(\d{1,2})/' => 'u-size-$1@m',
+			'/vc_col-md-(\d{1,2})/' => 'u-size-$1@l',
+			'/vc_col-lg-(\d{1,2})/' => 'u-size-$1@xl'
+		
+	    ],
+		
+	    'replace_callback' => function( $class, $tag, $atts ) {
             
 		    if ( $tag == 'vc_row' || $tag == 'vc_row_inner' ) {
 			    $classname = ! empty( $this->settings['replace']['vc_row'] ) ? $this->settings['replace']['vc_row'] : 'o-grid';
 			    $classname .= ! empty( $atts['full_width'] ) ? ( ! empty( $this->settings['replace']['vc_row-fluid'] ) ? $this->settings['replace']['vc_row-fluid'] : ' o-grid--edge' ) : '';
-			$class = str_replace( 'vc_row-fluid', $classname, $class );
-			$class = str_replace( array('vc_row', 'wpb_row', 'vc_inner'), array('', '', ''), $class );
+				$class = str_replace( 'vc_row-fluid', $classname, $class );
+				$class = str_replace( array('vc_row', 'wpb_row', 'vc_inner'), array('', '', ''), $class );
 		    }
 		    if ( $tag == 'vc_column' || $tag == 'vc_column_inner' ) {
-			$class = str_replace( 'wpb_column vc_column_container', ! empty( $this->settings['replace']['wpb_column'] ) ? $this->settings['replace']['wpb_column'] : 'o-grid__item', $class );
-			$class = preg_replace( '/vc_col-xs-(\d{1,2})/', ! empty( $this->settings['replace']['vc_col-xs-$1'] ) ? $this->settings['replace']['vc_col-xs-$1'] : 'u-size-$1', $class );
-			$class = preg_replace( '/vc_col-sm-(\d{1,2})/', ! empty( $this->settings['replace']['vc_col-sm-$1'] ) ? $this->settings['replace']['vc_col-sm-$1'] : 'u-size-$1-m', $class );
-			$class = preg_replace( '/vc_col-md-(\d{1,2})/', ! empty( $this->settings['replace']['vc_col-md-$1'] ) ? $this->settings['replace']['vc_col-md-$1'] : 'u-size-$1-l', $class );
-			$class = preg_replace( '/vc_col-lg-(\d{1,2})/', ! empty( $this->settings['replace']['vc_col-lg-$1'] ) ? $this->settings['replace']['vc_col-lg-$1'] : 'u-size-$1-xl', $class );
+				$class = str_replace( 'wpb_column vc_column_container', ! empty( $this->settings['replace']['wpb_column'] ) ? $this->settings['replace']['wpb_column'] : 'o-grid__item', $class );
+				$class = preg_replace( '/vc_col-xs-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-xs-(\d{1,2})/'] ) ? $this->settings['replace']['vc_col-xs-$1'] : 'u-size-$1', $class );
+				$class = preg_replace( '/vc_col-sm-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-sm-(\d{1,2})/'] ) ? $this->settings['replace']['vc_col-sm-$1'] : 'u-size-$1@m', $class );
+				$class = preg_replace( '/vc_col-md-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-md-(\d{1,2})/'] ) ? $this->settings['replace']['vc_col-md-$1'] : 'u-size-$1@l', $class );
+				$class = preg_replace( '/vc_col-lg-(\d{1,2})/', ! empty( $this->settings['replace']['/vc_col-lg-(\d{1,2})/'] ) ? $this->settings['replace']['vc_col-lg-$1'] : 'u-size-$1@xl', $class );
 		    }
 		    return $class;
 
