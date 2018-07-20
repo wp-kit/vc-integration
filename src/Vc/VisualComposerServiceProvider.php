@@ -41,6 +41,7 @@
 				'params' => [],
 				'support' => [],
 				'replace' => [],
+				'replace_callback' => array($this, 'customCssClasses'),
 				'vc_path' => resources_path('vc'),
 				'reset' => false,
 				'reset_shortcodes' => false,
@@ -71,7 +72,7 @@
 			}
 
 			add_action( 'wp_enqueue_scripts', array($this, 'removeVcStyles'), 99 );
-			add_filter( 'vc_shortcodes_css_class', array($this, 'customCssClasses'), 10, 3 );
+			add_filter( 'vc_shortcodes_css_class', $this->settings['replace_callback'], 10, 3 );
 			add_action( 'vc_after_init', array($this, 'addVcParams') );
 
 		}
@@ -128,18 +129,10 @@
 	     */
 		public function customCssClasses( $class, $tag, $atts ) {
 			
-			if( is_array( $this->settings['replace'] ) ) {
-			
-				foreach($this->settings['replace'] as $find => $replace) {
+			foreach($this->settings['replace'] as $find => $replace) {
 					
-					$class = preg_replace( $find, $replace, $class );
-					
-				}
-				
-			} else if( is_callable( $this->settings['replace'] ) ) {
-				
-				$class = $this->settings['replace']( $class, $tag, $atts );
-				
+				$class = preg_replace( $find, $replace, $class );
+
 			}
 
 		    return $class;
